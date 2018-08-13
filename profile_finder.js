@@ -1,19 +1,19 @@
 const readline = require('readline');
 const Json2csvParser = require('json2csv').Parser;
 const fs = require('fs')
-const PersonalityInsightsV3 =require('watson-developer-cloud/personality-insights/v3');
-const personality_insights = new PersonalityInsightsV3({
+const v3 =require('watson-developer-cloud/personality-insights/v3');
+const auth = new v3({
     username: "1b66c6a1-a6e6-4c68-8c35-d7babfca283a",
     password: "HaBx2QdzxoGu",
     version_date: "2017-10-13"
 });
 
-const rl = readline.createInterface({
+const read = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-rl.question('Please enter a short paragraph for Watson to analyze...', (text) => {
+read.question('Please enter a short paragraph for Watson to analyze...', (text) => {
 
   let params = {
     content: text,
@@ -23,7 +23,7 @@ rl.question('Please enter a short paragraph for Watson to analyze...', (text) =>
     consumption_preferences: true
   };
   
-  personality_insights.profile(params, function(error, response) {
+  auth.profile(params, function(error, response) {
   if (error)
     console.log('Error:', error);
   else{
@@ -40,5 +40,5 @@ rl.question('Please enter a short paragraph for Watson to analyze...', (text) =>
   }
 );
 
-  rl.close();
+  read.close();
 });
