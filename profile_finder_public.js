@@ -19,7 +19,6 @@ read.question('Type something...', (text) => {
     content: text,
     content_type: 'text/plain',
     accept: 'text/csv',
-    raw_scores: true,
     consumption_preferences: true
   };
   
