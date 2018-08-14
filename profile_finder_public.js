@@ -13,7 +13,7 @@ const read = readline.createInterface({
   output: process.stdout
 });
 
-read.question('Please enter a short paragraph for Watson to analyze...', (text) => {
+read.question('Type something...', (text) => {
 
   let params = {
     content: text,
